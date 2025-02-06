@@ -34,10 +34,10 @@ function operate(num1, num2, operator) {
 }
 
 let display = document.querySelector(".calculator-display")
-let numpadButtons = document.querySelectorAll(".calculator-numpad .numpad")
-numpadButtons.forEach(btn => {
+
+let buttons = document.querySelectorAll([".calculator-numpad .numpad",".calculator-operators .operator"])
+buttons.forEach(btn => {
     btn.addEventListener("click", () => {
         display.textContent = display.textContent + btn.textContent
     })
 })
-
