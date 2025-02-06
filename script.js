@@ -76,3 +76,24 @@ let evalButton = document.querySelector(".eval-button")
 evalButton.addEventListener("click", () => {
     evaluate()
 })
+
+let allClearButton = document.querySelector(".all-clear-button")
+allClearButton.addEventListener("click", () => {
+    display.textContent = ""
+    num1 = null
+    num2 = null
+    operator = null
+})
+
+let clearButton = document.querySelector(".clear-button")
+clearButton.addEventListener("click", () => {
+    let erasedNum = display.textContent.slice(0, -1)
+    if(!operator){
+        num1 = +erasedNum
+        display.textContent = num1
+    } 
+    else {
+        num2 = erasedNum
+        display.textContent = num2
+    } 
+})
