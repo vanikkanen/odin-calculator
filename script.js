@@ -32,3 +32,12 @@ function operate(num1, num2, operator) {
             return "No support for that operator. Try one of these + - * /"
         }
 }
+
+let display = document.querySelector(".calculator-display")
+let numpadButtons = document.querySelectorAll(".calculator-numpad .numpad")
+numpadButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        display.textContent = display.textContent + btn.textContent
+    })
+})
+
