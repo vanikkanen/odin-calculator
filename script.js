@@ -33,11 +33,43 @@ function operate(num1, num2, operator) {
         }
 }
 
+function evaluate() {
+    if (!num1 || !num2) return
+
+    num1 = operate(+num1, +num2, operator)
+    display.textContent = num1
+    operator = null
+    num2 = null
+}
+
 let display = document.querySelector(".calculator-display")
 
-let buttons = document.querySelectorAll([".calculator-numpad .numpad",".calculator-operators .operator"])
-buttons.forEach(btn => {
+let numpadButtons = document.querySelectorAll(".calculator-numpad .numpad")
+numpadButtons.forEach(btn => {
     btn.addEventListener("click", () => {
-        display.textContent = display.textContent + btn.textContent
+        if(!operator){
+            num1 = num1 ? num1 + btn.textContent : btn.textContent
+            display.textContent = num1
+        } 
+        else {
+            num2 = num2 ? num2 + btn.textContent : btn.textContent
+            display.textContent = num2
+        } 
     })
+})
+
+let operatorButtons = document.querySelectorAll(".calculator-operators .operator")
+operatorButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        if (!operator) operator = btn.textContent
+        else {
+            evaluate()
+            operator = btn.textContent
+        }
+    })
+})
+
+let evalButton = document.querySelector(".eval-button")
+evalButton.addEventListener("click", () => {
+    evaluate()
 })
