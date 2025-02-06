@@ -11,6 +11,9 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
+    if (num2 === 0) {
+        return "No dividing by zero, please"
+    }
     return num1/num2
 }
 
@@ -48,7 +51,7 @@ let numpadButtons = document.querySelectorAll(".calculator-numpad .numpad")
 numpadButtons.forEach(btn => {
     btn.addEventListener("click", () => {
         if(!operator){
-            num1 = num1 ? num1 + btn.textContent : btn.textContent
+            num1 = +num1 ? num1 + btn.textContent : btn.textContent
             display.textContent = num1
         } 
         else {
