@@ -98,12 +98,12 @@ function addDecimaltoCalculator() {
 
 let display = document.querySelector(".calculator-display")
 
-let numpadButtons = document.querySelectorAll(".calculator-numpad .numpad")
+let numpadButtons = document.querySelectorAll(".numpad")
 numpadButtons.forEach(btn => {
     btn.addEventListener("click", () => addNumberToCalculator(btn.textContent))
 })
 
-let operatorButtons = document.querySelectorAll(".calculator-operators .operator")
+let operatorButtons = document.querySelectorAll(".operator")
 operatorButtons.forEach(btn => {
     btn.addEventListener("click", () => addOperatorToCalculator(btn.textContent))
 })
@@ -119,5 +119,3 @@ clearButton.addEventListener("click", () => clearLastFromCalculator())
 
 let decimalButton = document.querySelector(".decimal-button")
 decimalButton.addEventListener("click", () => addDecimaltoCalculator())
-
-
