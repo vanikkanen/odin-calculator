@@ -39,7 +39,8 @@ function operate(num1, num2, operator) {
 function evaluate() {
     if (!num1 || !num2) return
 
-    num1 = operate(+num1, +num2, operator)
+    let ans = operate(+num1, +num2, operator)
+    num1 = !Number.isNaN(parseFloat(ans)) ? Math.round(ans + Number.EPSILON * 10000) / 10000 : ans
     display.textContent = num1
     operator = null
     num2 = null
@@ -96,7 +97,7 @@ allClearButton.addEventListener("click", () => {
 
 let clearButton = document.querySelector(".clear-button")
 clearButton.addEventListener("click", () => {
-    
+
     let erasedNum = display.textContent.slice(0, -1)
 
     let num = chooseCorrectNum()
