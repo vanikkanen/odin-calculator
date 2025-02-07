@@ -40,7 +40,7 @@ function evaluate() {
     if (!num1 || !num2) return
 
     let ans = operate(+num1, +num2, operator)
-    num1 = !Number.isNaN(parseFloat(ans)) ? Math.round(ans + Number.EPSILON * 10000) / 10000 : ans
+    num1 = !Number.isNaN(parseFloat(ans)) ? Math.round((ans + Number.EPSILON) * 10000) / 10000 : ans
     display.textContent = num1
     operator = null
     num2 = null
