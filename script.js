@@ -51,11 +51,11 @@ let numpadButtons = document.querySelectorAll(".calculator-numpad .numpad")
 numpadButtons.forEach(btn => {
     btn.addEventListener("click", () => {
         if(!operator){
-            num1 = +num1 ? num1 + btn.textContent : btn.textContent
+            num1 = !Number.isNaN(parseFloat(num1)) ? num1 + btn.textContent : btn.textContent
             display.textContent = num1
         } 
         else {
-            num2 = num2 ? num2 + btn.textContent : btn.textContent
+            num2 = !Number.isNaN(parseFloat(num2)) ? num2 + btn.textContent : btn.textContent
             display.textContent = num2
         } 
     })
@@ -94,6 +94,19 @@ clearButton.addEventListener("click", () => {
     } 
     else {
         num2 = erasedNum
+        display.textContent = num2
+    } 
+})
+
+let decimalButton = document.querySelector(".decimal-button")
+decimalButton.addEventListener("click", () => {
+    if (display.textContent.includes(".")) return
+    if(!operator){
+        num1 += "."
+        display.textContent = num1
+    } 
+    else {
+        num2 += "."
         display.textContent = num2
     } 
 })
