@@ -10,8 +10,10 @@
 <body>
     <div class="calculator-container">
         <div class="calculator-display"></div>
-        <button class="all-clear-button">AC</button>
-        <button class="clear-button">C</button>
+        <div class="remove-buttons">
+            <button class="all-clear-button">AC</button>
+            <button class="clear-button">C</button>
+        </div>
         <div class="calculator-numpad">
             <button class="numpad">1</button>
             <button class="numpad">2</button>
@@ -22,7 +24,6 @@
             <button class="numpad">7</button>
             <button class="numpad">8</button>
             <button class="numpad">9</button>
-            <button class="numpad">0</button>
         </div>
         <div class="calculator-operators">
             <button class="operator">+</button>
@@ -30,8 +31,11 @@
             <button class="operator">*</button>
             <button class="operator">/</button>
         </div>
-        <button class="decimal-button">.</button>
-        <button class="eval-button">=</button>
+        <div class="bottom-row">
+            <button class="numpad">0</button>
+            <button class="decimal-button">.</button>
+            <button class="eval-button">=</button>
+        </div>
     </div>
 </body>
 </html>
