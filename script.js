@@ -58,61 +58,66 @@ function updateCorrectNum(value) {
     }
 }
 
+function addNumberToCalculator(numString) {
+    let num = chooseCorrectNum()
+    num = !Number.isNaN(parseFloat(num)) ? num + numString : numString
+    updateCorrectNum(num)
+    display.textContent = num
+}
+
+function addOperatorToCalculator(operatorString) {
+    if (!operator) operator = operatorString
+    else {
+        evaluate()
+        operator = operatorString
+    }
+}
+
+function clearAllFromCalculator() {
+    display.textContent = ""
+    num1 = null
+    num2 = null
+    operator = null
+}
+
+function clearLastFromCalculator() {
+    let erasedNum = display.textContent.slice(0, -1)
+    let num = chooseCorrectNum()
+    num = erasedNum
+    updateCorrectNum(num)
+    display.textContent = num
+}
+
+function addDecimaltoCalculator() {
+    if (display.textContent.includes(".")) return
+    let num = chooseCorrectNum()
+    num += "."
+    updateCorrectNum(num)
+    display.textContent = num
+}
 
 let display = document.querySelector(".calculator-display")
 
 let numpadButtons = document.querySelectorAll(".calculator-numpad .numpad")
 numpadButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-        let num = chooseCorrectNum()
-        num = !Number.isNaN(parseFloat(num)) ? num + btn.textContent : btn.textContent
-        updateCorrectNum(num)
-        display.textContent = num
-    })
+    btn.addEventListener("click", () => addNumberToCalculator(btn.textContent))
 })
 
 let operatorButtons = document.querySelectorAll(".calculator-operators .operator")
 operatorButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-        if (!operator) operator = btn.textContent
-        else {
-            evaluate()
-            operator = btn.textContent
-        }
-    })
+    btn.addEventListener("click", () => addOperatorToCalculator(btn.textContent))
 })
 
 let evalButton = document.querySelector(".eval-button")
-evalButton.addEventListener("click", () => {
-    evaluate()
-})
+evalButton.addEventListener("click", () => evaluate())
 
 let allClearButton = document.querySelector(".all-clear-button")
-allClearButton.addEventListener("click", () => {
-    display.textContent = ""
-    num1 = null
-    num2 = null
-    operator = null
-})
+allClearButton.addEventListener("click", () => clearAllFromCalculator())
 
 let clearButton = document.querySelector(".clear-button")
-clearButton.addEventListener("click", () => {
-
-    let erasedNum = display.textContent.slice(0, -1)
-
-    let num = chooseCorrectNum()
-    num = erasedNum
-    updateCorrectNum(num)
-    display.textContent = num
-})
+clearButton.addEventListener("click", () => clearLastFromCalculator())
 
 let decimalButton = document.querySelector(".decimal-button")
-decimalButton.addEventListener("click", () => {
+decimalButton.addEventListener("click", () => addDecimaltoCalculator())
 
-    if (display.textContent.includes(".")) return
 
-    let num = chooseCorrectNum()
-    num += "."
-    updateCorrectNum(num)
-    display.textContent = num
-})
